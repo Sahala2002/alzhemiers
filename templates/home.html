@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Home | Alzheimer's Detection
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<section class="hero-section">
+
+```
+<div class="container">
+
+    <div class="row align-items-center">
+
+        <!-- LEFT SIDE -->
+        <div class="col-lg-6">
+
+            <h1 class="hero-title">
+                Alzheimer's Disease
+                <span>Detection</span>
+            </h1>
+
+            <p class="hero-text">
+                An AI-powered system that analyzes MRI brain images
+                using Machine Learning to assist in Alzheimer's
+                disease stage classification.
+            </p>
+
+            <a href="#prediction" class="btn btn-primary btn-lg">
+                Start Prediction
+            </a>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-6 text-center">
+
+            <div class="brain-card">
+
+                <div class="brain-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    AI Powered Detection
+                </h3>
+
+                <p>
+                    Fast and intelligent MRI image analysis
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- PREDICTION SECTION -->
+
+<section id="prediction" class="prediction-section">
+
+```
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <h2>
+            MRI Image Prediction
+        </h2>
+
+        <p>
+            Upload an MRI brain image to predict the Alzheimer's stage.
+        </p>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="upload-card">
+
+                <form method="POST"
+                      enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+
+                    <div class="upload-area">
+
+                        <div class="upload-icon">
+                            📁
+                        </div>
+
+                        <h4>
+                            Upload MRI Image
+                        </h4>
+
+                        <p>
+                            Select an MRI brain scan image
+                        </p>
+
+                        <input
+                            type="file"
+                            name="image"
+                            class="form-control"
+                            accept="image/*"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="text-center mt-4">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg">
+
+                            🔍 Predict Alzheimer's Stage
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- CLASSES SECTION -->
+
+<section class="classes-section">
+
+```
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <h2>
+            Prediction Categories
+        </h2>
+
+        <p>
+            The model classifies MRI images into four categories.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- MILD -->
+        <div class="col-md-3">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🧠
+                </div>
+
+                <h5>
+                    Mild Demented
+                </h5>
+
+                <p>
+                    MRI pattern associated with mild dementia.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MODERATE -->
+        <div class="col-md-3">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🔬
+                </div>
+
+                <h5>
+                    Moderate Demented
+                </h5>
+
+                <p>
+                    MRI pattern associated with moderate dementia.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NON-DEMENTED -->
+        <div class="col-md-3">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    ✅
+                </div>
+
+                <h5>
+                    Non Demented
+                </h5>
+
+                <p>
+                    MRI image classified as non-demented.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- VERY MILD -->
+        <div class="col-md-3">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🩺
+                </div>
+
+                <h5>
+                    Very Mild Demented
+                </h5>
+
+                <p>
+                    MRI pattern associated with very mild dementia.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- DISCLAIMER SECTION -->
+
+<section class="disclaimer-section">
+
+```
+<div class="container">
+
+    <div class="alert alert-warning text-center">
+
+        <strong>Disclaimer:</strong>
+
+        This system is developed for academic and research purposes.
+        The prediction should not be considered a medical diagnosis.
+        Please consult a qualified healthcare professional for
+        medical evaluation.
+
+    </div>
+
+</div>
+```
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,650 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+About | AlzheimerCare
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .about-page {
+
+        background: #f8f7ff;
+
+        padding: 90px 0;
+
+    }
+
+
+    .about-header {
+
+        text-align: center;
+
+        margin-bottom: 60px;
+
+    }
+
+
+    .about-header h1 {
+
+        font-size: 45px;
+
+        font-weight: 800;
+
+        color: #29235f;
+
+    }
+
+
+    .about-header span {
+
+        color: #d82e70;
+
+    }
+
+
+    .about-card {
+
+        background: white;
+
+        padding: 45px;
+
+        border-radius: 30px;
+
+        box-shadow:
+            0 15px 45px
+            rgba(64,51,168,0.10);
+
+        height: 100%;
+
+    }
+
+
+    .about-card h2 {
+
+        color: #4033a8;
+
+        font-weight: 800;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .about-card p {
+
+        color: #716b87;
+
+        line-height: 1.9;
+
+    }
+
+
+    .tech-card {
+
+        background: white;
+
+        padding: 30px;
+
+        border-radius: 25px;
+
+        text-align: center;
+
+        height: 100%;
+
+        border-top: 5px solid #4033a8;
+
+        box-shadow:
+            0 10px 30px
+            rgba(64,51,168,0.08);
+
+    }
+
+
+    .tech-icon {
+
+        font-size: 45px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .tech-card h5 {
+
+        color: #4033a8;
+
+        font-weight: 700;
+
+    }
+
+
+    .tech-card p {
+
+        color: #77718f;
+
+    }
+
+
+    .model-section {
+
+        margin-top: 70px;
+
+    }
+
+
+    .model-title {
+
+        text-align: center;
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .model-title h2 {
+
+        color: #29235f;
+
+        font-weight: 800;
+
+    }
+
+
+    .info-card {
+
+        background: linear-gradient(
+            135deg,
+            #4033a8,
+            #d82e70
+        );
+
+        color: white;
+
+        padding: 30px;
+
+        border-radius: 25px;
+
+        text-align: center;
+
+        height: 100%;
+
+    }
+
+
+    .info-card h3 {
+
+        font-size: 30px;
+
+        font-weight: 800;
+
+    }
+
+
+    .info-card p {
+
+        color: #eeeaff;
+
+        margin: 0;
+
+    }
+
+
+    .class-table {
+
+        background: white;
+
+        border-radius: 25px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 10px 35px
+            rgba(64,51,168,0.08);
+
+    }
+
+
+    .class-table thead {
+
+        background: #4033a8;
+
+        color: white;
+
+    }
+
+
+    .class-table th,
+    .class-table td {
+
+        padding: 18px;
+
+    }
+
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<section class="about-page">
+
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="about-header">
+
+            <h1>
+                About <span>AlzheimerCare</span>
+            </h1>
+
+            <p>
+                AI-Based Alzheimer's Disease Detection System
+            </p>
+
+        </div>
+
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-7">
+
+                <div class="about-card">
+
+                    <h2>
+                        🧠 About the Project
+                    </h2>
+
+                    <p>
+
+                        Alzheimer's disease is a progressive neurological
+                        disorder that primarily affects memory, thinking,
+                        behaviour and other cognitive abilities.
+
+                    </p>
+
+
+                    <p>
+
+                        This project aims to develop an Artificial
+                        Intelligence based system for classifying MRI
+                        brain images into different Alzheimer's disease
+                        stages.
+
+                    </p>
+
+
+                    <p>
+
+                        A deep learning model is integrated with a
+                        Django web application. Users can upload an MRI
+                        image and receive the classification generated
+                        by the trained machine learning model.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="about-card text-center">
+
+                    <div style="font-size:100px;">
+                        🧠
+                    </div>
+
+                    <h3
+                        style="color:#d82e70;
+                               font-weight:800;">
+
+                        AI + Healthcare
+
+                    </h3>
+
+                    <p>
+
+                        Combining deep learning and medical image
+                        analysis to support research in Alzheimer's
+                        disease detection.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TECHNOLOGY -->
+
+        <div class="model-section">
+
+
+            <div class="model-title">
+
+                <h2>
+                    Technologies Used
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-md-3">
+
+                    <div class="tech-card">
+
+                        <div class="tech-icon">
+                            🐍
+                        </div>
+
+                        <h5>
+                            Python
+                        </h5>
+
+                        <p>
+                            Programming language used for
+                            ML development.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="tech-card">
+
+                        <div class="tech-icon">
+                            🤖
+                        </div>
+
+                        <h5>
+                            TensorFlow
+                        </h5>
+
+                        <p>
+                            Deep learning framework used
+                            for model training.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="tech-card">
+
+                        <div class="tech-icon">
+                            🌐
+                        </div>
+
+                        <h5>
+                            Django
+                        </h5>
+
+                        <p>
+                            Web framework used to integrate
+                            the ML model.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="tech-card">
+
+                        <div class="tech-icon">
+                            🗄️
+                        </div>
+
+                        <h5>
+                            SQLite
+                        </h5>
+
+                        <p>
+                            Database used for storing
+                            prediction history.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MODEL -->
+
+        <div class="model-section">
+
+
+            <div class="model-title">
+
+                <h2>
+                    Machine Learning Model
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-md-3">
+
+                    <div class="info-card">
+
+                        <h3>
+                            ResNet50
+                        </h3>
+
+                        <p>
+                            Model Architecture
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="info-card">
+
+                        <h3>
+                            224×224
+                        </h3>
+
+                        <p>
+                            Input Image
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="info-card">
+
+                        <h3>
+                            4
+                        </h3>
+
+                        <p>
+                            Output Classes
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="info-card">
+
+                        <h3>
+                            AI
+                        </h3>
+
+                        <p>
+                            Deep Learning
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CLASSES -->
+
+        <div class="model-section">
+
+
+            <div class="model-title">
+
+                <h2>
+                    Classification Categories
+                </h2>
+
+            </div>
+
+
+            <div class="table-responsive class-table">
+
+                <table class="table mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Class
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    NonDemented
+                                </strong>
+                            </td>
+
+                            <td>
+                                MRI image classified as
+                                non-demented.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    VeryMildDemented
+                                </strong>
+                            </td>
+
+                            <td>
+                                Very mild dementia classification.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    MildDemented
+                                </strong>
+                            </td>
+
+                            <td>
+                                Mild dementia classification.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ModerateDemented
+                                </strong>
+                            </td>
+
+                            <td>
+                                Moderate dementia classification.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}

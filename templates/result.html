@@ -1,0 +1,444 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Prediction Result | AlzheimerCare
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .result-page {
+
+        padding: 90px 0;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f7f5ff,
+                #fff2f7
+            );
+
+        min-height: 650px;
+
+    }
+
+
+    .result-heading {
+
+        text-align: center;
+
+        margin-bottom: 50px;
+
+    }
+
+
+    .result-heading h1 {
+
+        font-size: 42px;
+
+        font-weight: 800;
+
+        color: #29235f;
+
+    }
+
+
+    .result-heading span {
+
+        color: #d82e70;
+
+    }
+
+
+    .result-card {
+
+        background: white;
+
+        border-radius: 30px;
+
+        padding: 45px;
+
+        box-shadow:
+            0 20px 60px
+            rgba(64,51,168,0.12);
+
+    }
+
+
+    .mri-container {
+
+        background: #f5f3ff;
+
+        border-radius: 25px;
+
+        padding: 25px;
+
+        text-align: center;
+
+    }
+
+
+    .mri-image {
+
+        max-width: 100%;
+
+        max-height: 350px;
+
+        border-radius: 20px;
+
+        object-fit: contain;
+
+    }
+
+
+    .result-label {
+
+        color: #8a849e;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .prediction-name {
+
+        font-size: 38px;
+
+        font-weight: 800;
+
+        background:
+            linear-gradient(
+                135deg,
+                #4033a8,
+                #d82e70
+            );
+
+        -webkit-background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+
+    }
+
+
+    .confidence-number {
+
+        font-size: 25px;
+
+        font-weight: 700;
+
+        color: #4033a8;
+
+    }
+
+
+    .progress {
+
+        height: 14px;
+
+        border-radius: 20px;
+
+        background: #eeeaff;
+
+    }
+
+
+    .progress-bar {
+
+        background:
+            linear-gradient(
+                90deg,
+                #4033a8,
+                #d82e70
+            );
+
+        border-radius: 20px;
+
+    }
+
+
+    .result-box {
+
+        padding: 25px;
+
+        border-radius: 20px;
+
+        background: #fff5f8;
+
+        border-left: 5px solid #d82e70;
+
+        margin-top: 25px;
+
+    }
+
+
+    .new-btn {
+
+        background:
+            linear-gradient(
+                135deg,
+                #4033a8,
+                #d82e70
+            );
+
+        color: white;
+
+        padding: 13px 28px;
+
+        border-radius: 30px;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+        display: inline-block;
+
+        margin-top: 25px;
+
+    }
+
+
+    .history-btn {
+
+        background: #eeeaff;
+
+        color: #4033a8;
+
+        padding: 13px 28px;
+
+        border-radius: 30px;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+        display: inline-block;
+
+        margin-top: 25px;
+
+        margin-left: 8px;
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<section class="result-page">
+
+    <div class="container">
+
+
+        <div class="result-heading">
+
+            <h1>
+                Your <span>Prediction Result</span>
+            </h1>
+
+            <p>
+                AI analysis of the uploaded MRI brain image
+            </p>
+
+        </div>
+
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+
+
+                <div class="result-card">
+
+
+                    <div class="row align-items-center g-5">
+
+
+                        <!-- IMAGE -->
+
+                        <div class="col-md-6">
+
+                            <div class="mri-container">
+
+                                {% if image_url %}
+
+                                <img
+                                    src="{{ image_url }}"
+                                    class="mri-image"
+                                    alt="MRI Image">
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- RESULT -->
+
+                        <div class="col-md-6">
+
+
+                            <div class="result-label">
+
+                                Predicted Condition
+
+                            </div>
+
+
+                            <div class="prediction-name">
+
+                                {{ prediction }}
+
+                            </div>
+
+
+                            {% if confidence %}
+
+                            <div class="mt-4">
+
+                                <div
+                                    class="d-flex justify-content-between">
+
+                                    <span>
+                                        Model Confidence
+                                    </span>
+
+                                    <span
+                                        class="confidence-number">
+
+                                        {{ confidence }}%
+
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="progress mt-2">
+
+                                    <div
+                                        class="progress-bar"
+                                        style="width: {{ confidence }}%;">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+
+
+                            <div class="result-box">
+
+
+                                {% if prediction == "NonDemented" %}
+
+                                <h5>
+                                    🟢 Non-Demented
+                                </h5>
+
+                                <p>
+                                    The model classified the uploaded
+                                    MRI image as Non-Demented.
+                                </p>
+
+
+                                {% elif prediction == "VeryMildDemented" %}
+
+                                <h5>
+                                    🟣 Very Mild Demented
+                                </h5>
+
+                                <p>
+                                    The model classified the uploaded
+                                    MRI image as Very Mild Demented.
+                                </p>
+
+
+                                {% elif prediction == "MildDemented" %}
+
+                                <h5>
+                                    🟠 Mild Demented
+                                </h5>
+
+                                <p>
+                                    The model classified the uploaded
+                                    MRI image as Mild Demented.
+                                </p>
+
+
+                                {% elif prediction == "ModerateDemented" %}
+
+                                <h5>
+                                    🔴 Moderate Demented
+                                </h5>
+
+                                <p>
+                                    The model classified the uploaded
+                                    MRI image as Moderate Demented.
+                                </p>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <a
+                                href="{% url 'home' %}"
+                                class="new-btn">
+
+                                ← New Prediction
+
+                            </a>
+
+
+                            <a
+                                href="{% url 'history' %}"
+                                class="history-btn">
+
+                                View History
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="alert alert-warning mt-4">
+
+                    <strong>Medical Disclaimer:</strong>
+
+                    This prediction is generated by a machine learning
+                    model for academic/research purposes and should not
+                    be considered a medical diagnosis.
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

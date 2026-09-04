@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Prediction History | AlzheimerCare
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .history-page {
+
+        min-height: 650px;
+
+        padding: 90px 0;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f8f7ff,
+                #fff1f6
+            );
+
+    }
+
+
+    .history-header {
+
+        text-align: center;
+
+        margin-bottom: 50px;
+
+    }
+
+
+    .history-header h1 {
+
+        font-size: 42px;
+
+        font-weight: 800;
+
+        color: #29235f;
+
+    }
+
+
+    .history-header span {
+
+        color: #d82e70;
+
+    }
+
+
+    .history-card {
+
+        background: white;
+
+        border-radius: 30px;
+
+        padding: 30px;
+
+        box-shadow:
+            0 15px 50px
+            rgba(64,51,168,0.10);
+
+    }
+
+
+    .history-table thead {
+
+        background: #4033a8;
+
+        color: white;
+
+    }
+
+
+    .history-table th {
+
+        padding: 18px;
+
+    }
+
+
+    .history-table td {
+
+        padding: 15px;
+
+        vertical-align: middle;
+
+    }
+
+
+    .history-image {
+
+        width: 70px;
+
+        height: 70px;
+
+        object-fit: cover;
+
+        border-radius: 15px;
+
+        border: 3px solid #eeeaff;
+
+    }
+
+
+    .prediction-badge {
+
+        background: #fff0f5;
+
+        color: #d82e70;
+
+        padding: 8px 15px;
+
+        border-radius: 20px;
+
+        font-weight: 600;
+
+    }
+
+
+    .empty-history {
+
+        text-align: center;
+
+        padding: 80px 20px;
+
+    }
+
+
+    .empty-icon {
+
+        font-size: 70px;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .new-prediction {
+
+        display: inline-block;
+
+        margin-top: 20px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #4033a8,
+                #d82e70
+            );
+
+        color: white;
+
+        padding: 13px 28px;
+
+        border-radius: 30px;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<section class="history-page">
+
+
+    <div class="container">
+
+
+        <div class="history-header">
+
+            <h1>
+                Prediction <span>History</span>
+            </h1>
+
+            <p>
+                Previously analyzed MRI brain images
+            </p>
+
+        </div>
+
+
+        <div class="history-card">
+
+
+            {% if predictions %}
+
+
+            <div class="table-responsive">
+
+                <table
+                    class="table history-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                MRI Image
+                            </th>
+
+                            <th>
+                                Prediction
+                            </th>
+
+                            <th>
+                                Confidence
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        {% for item in predictions %}
+
+                        <tr>
+
+
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
+
+
+                            <td>
+
+                                {% if item.image %}
+
+                                <img
+                                    src="{{ item.image.url }}"
+                                    class="history-image"
+                                    alt="MRI">
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                <span
+                                    class="prediction-badge">
+
+                                    {{ item.prediction }}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                {% if item.confidence %}
+
+                                {{ item.confidence }}%
+
+                                {% else %}
+
+                                N/A
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                {{ item.created_at|date:"d M Y, h:i A" }}
+
+                            </td>
+
+
+                        </tr>
+
+                        {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="empty-history">
+
+                <div class="empty-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    No Predictions Yet
+                </h3>
+
+                <p>
+                    Your MRI prediction history will appear here.
+                </p>
+
+
+                <a
+                    href="{% url 'home' %}"
+                    class="new-prediction">
+
+                    Start Your First Prediction →
+
+                </a>
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}

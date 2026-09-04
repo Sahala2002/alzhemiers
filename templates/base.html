@@ -1,0 +1,300 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}AlzheimerCare{% endblock %}
+    </title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f7ff;
+            color: #25204f;
+        }
+
+        /* NAVBAR */
+
+        .navbar-custom {
+            background: #ffffff;
+            padding: 18px 0;
+            box-shadow: 0 3px 20px rgba(64, 51, 168, 0.10);
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: #4033a8 !important;
+        }
+
+        .navbar-brand span {
+            color: #d82e70;
+        }
+
+        .nav-link {
+            color: #40366d !important;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #d82e70 !important;
+        }
+
+        .nav-btn {
+            background: linear-gradient(
+                135deg,
+                #4033a8,
+                #d82e70
+            );
+
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: #29235f;
+            color: white;
+            padding: 50px 0 25px;
+        }
+
+        .footer h4 {
+            font-weight: 700;
+        }
+
+        .footer p {
+            color: #d8d5ee;
+        }
+
+        .footer-line {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+
+    </style>
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+
+    <div class="container">
+
+        <a class="navbar-brand"
+           href="{% url 'home' %}">
+
+            🧠 Alzheimer<span>Care</span>
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'home' %}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'about' %}">
+
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'history' %}">
+
+                        History
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link nav-btn"
+                        href="{% url 'home' %}">
+
+                        Start Detection
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- PAGE CONTENT -->
+
+{% block content %}
+
+{% endblock %}
+
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h4>
+                    🧠 AlzheimerCare
+                </h4>
+
+                <p>
+                    AI-Based Alzheimer's Disease Detection
+                    using MRI Brain Images.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h6>
+                    Quick Links
+                </h6>
+
+                <p>
+                    Home
+                </p>
+
+                <p>
+                    About
+                </p>
+
+                <p>
+                    Prediction History
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h6>
+                    Technology
+                </h6>
+
+                <p>
+                    Python
+                </p>
+
+                <p>
+                    TensorFlow
+                </p>
+
+                <p>
+                    Django
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-line text-center">
+
+            <small>
+                © 2026 AlzheimerCare | MCA Mini Project
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+
+</html>
